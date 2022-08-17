@@ -10,11 +10,15 @@
     <body>
         @extends('layouts.app')　
         @section('content')
+        <header><h1>オタマップ</h1></header>
+        
+        {{ Auth::user()->name }}
         
         @csrf
         <form action="/" method="POST">
             <input id="section_form" type="text" placeholder="作品名"/>
         </form>
+        
         <button type="submit" form="serach_form">検索</button><br>
         
         <div class='posts'>
@@ -23,13 +27,13 @@
                 <h3 class="title">
                     <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                 </h3>
-                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a><br>
-                <p>{{ $post->user->name }}</p>
+               <a href="">{{ $post->category->name }}</a>
+                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
             </div>
             @endforeach
         </div>
         
-        [<a href='/posts/create'>create</a>]<br>
+        [<a href='/posts/create'>create</a>]
         
         
         @csrf

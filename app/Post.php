@@ -9,14 +9,33 @@ class Post extends Model
 {
     use SoftDeletes;
     
-    public function getPaginateByLimit(int $limit_count = 10)
+    //Categoryに対するリレーション
+       
+    //「1対多」の関係なので単数系に
+    public function category()
     {
-    // updated_atで降順に並べたあと、limitで件数制限をかける
-    return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->belongsTo('App\Category');
     }
     
     protected $fillable = [
         'title',
         'body',
+        'category_id',
+        'user_id'
     ];
+    
+    function getPaginateByLimit(int $limit_count = 5)
+    {
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+
+    //Userに対するリレーション
+    
+    //「1対多」の関係なのでuser(単数形)
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
 }

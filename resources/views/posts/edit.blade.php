@@ -8,6 +8,8 @@
     </head>
     
     <body>
+        @extends('layouts.app')　
+        @section('content')
         <header><h1>オタマップ</h1></header>
     
         <h1 class="title">編集画面</h1>
@@ -28,5 +30,6 @@
             </div>
             
          <div class="back">[<a href="/">back</a>]</div>
+         @endsection
     </body>
 </html>

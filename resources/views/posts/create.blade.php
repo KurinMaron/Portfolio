@@ -6,6 +6,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <body>
+        @extends('layouts.app')　
+        @section('content')
         <header><h1>オタマップ</h1></header>
         
          <form action="/posts" method="POST">
@@ -20,8 +22,18 @@
                 <textarea name="post[body]" placeholder="本文">{{ old('post.body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post/body') }}</p>
             </div>
+            
+            <div class="category">
+                <h2>Category</h2>
+                <select name="post[category_id]">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+                </select>
+            </div>
             <input type="submit" value="保存"/>
         </form>
         <div class="back">[<a href="/">back</a>]</div>
+        @endsection
     </body>
 </html>
