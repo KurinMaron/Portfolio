@@ -20,9 +20,12 @@
         <div class='posts'>
             @foreach($posts as $post)
             <div class='post'>
-                <h3 class="title">
-                    <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                <h3 class="spot">聖地
+                    <a href="/posts/{{ $post->id }}">{{ $post->spot }}</a>
                 </h3>
+                <h4 class="title">作品名
+                    <a href="/shows/{{ $post->id }}">{{ $post->title }}</a>
+                </h4>
                 <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a><br>
                 <p>{{ $post->user->name }}</p>
             </div>
@@ -31,7 +34,7 @@
         
         [<a href='/posts/create'>create</a>]<br>
         
-        
+        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
         @csrf
         @method('DELETE')
         <button type="submit">delete</button> 

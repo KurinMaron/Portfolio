@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Http\Requests\PostRequest;
 use App\Category;
+use App\Spot;
 
 class PostController extends Controller
 {
@@ -17,6 +18,11 @@ class PostController extends Controller
     public function show(Post $post)
     {
     return view('posts/show')->with(['post' => $post]);
+    }
+    
+    public function detail(Post $post)
+    {
+    return view('posts/detail')->with(['post' => $post]);
     }
     
     public function create(Category $category)
@@ -41,6 +47,7 @@ class PostController extends Controller
     {
     $input_post = $request['post'];
     $input_post += ['user_id' => $request->user()->id];  
+    
     $post->fill($input_post)->save();
     return redirect('/posts/' . $post->id);
     }

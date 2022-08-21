@@ -12,6 +12,11 @@
         
          <form action="/posts" method="POST">
             @csrf
+            <div class="spot">
+                <h2>聖地</h2>
+                <input type="text" name="post[spot]" placeholder="地名" value="{{ old('post.spot') }}"/>
+            
+            
             <div class="title">
                 <h2>Title</h2>
                 <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
