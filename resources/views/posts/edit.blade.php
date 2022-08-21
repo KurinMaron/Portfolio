@@ -21,6 +21,10 @@
                         <input type='text' name='post[spot]' value="{{ $post->spot }}">
                     </div>
                     
+                    <h2>聖地住所</h2>
+                        <input type='text' name='post[address]' value="{{ $post->address }}">
+                    </div>
+                    
                     <div class='content__title'>
                         <h2>作品名</h2>
                         <input type='text' name='post[title]' value="{{ $post->title }}">

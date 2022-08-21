@@ -29,16 +29,15 @@
                 <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a><br>
                 <p>{{ $post->user->name }}</p>
             </div>
+            <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit">delete</button> 
+            </form>
             @endforeach
         </div>
         
         [<a href='/posts/create'>create</a>]<br>
-        
-        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
-        @csrf
-        @method('DELETE')
-        <button type="submit">delete</button> 
-        </form>
         
         <div class='paginate'>
             {{ $posts->links() }}

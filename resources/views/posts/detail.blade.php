@@ -18,7 +18,7 @@
              聖地 <a href="/posts/{{ $post->id }}">{{ $post->spot }}</a>
         </h1>
         
-        <h3 class="address">
+        <h3 class="address">聖地住所
             {{ $post->address }}
         </h3>
                
@@ -38,9 +38,9 @@
         <div id="map" style="height:500px">
         </div>
         
-        <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBgu_4DZLv1VuWR6KkSDbJd0sIGLeCEXgo&callback=initMap" async defer>
+        <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ config("services.googlemap.key") }}&callback=initMap" async defer>
 
-        
+        <div class="back">[<a href="/">back</a>]</div>
        
         
         @endsection

@@ -23,6 +23,7 @@ class Post extends Model
         'spot',
         'category_id',
         'user_id',
+        'address'
     ];
     
     function getPaginateByLimit(int $limit_count = 5)
