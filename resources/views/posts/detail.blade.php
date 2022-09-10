@@ -7,7 +7,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="/css/app.css">
-        <script src="{{ asset('/js/result.js') }}" defer></script>
+        <script src="{{ asset('/js/result.js') }}"></script>
     </head>
     <body>
         @extends('layouts.app')　
@@ -57,9 +57,9 @@
         </div>
         
         <script>const point = @json($post->address)</script>
-        <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ config("services.googlemap.key") }}&callback=initMap" async defer>
-
-        <div class="back">[<a href="/">back</a>]</div>
+        <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ config("services.googlemap.key") }}&callback=initMap" async defer>
+        </script>
+       
        
         
         @endsection

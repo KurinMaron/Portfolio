@@ -2,9 +2,9 @@
 //googleMapsAPIの表示にcallback=initMapと記述したためinitMap関数を作成
 function initMap() {
     var target = document.getElementById('map'); //マップを表示する要素を指定
-  var address = point; //住所を指定
-  var geocoder = new google.maps.Geocoder();  
-
+    var address = point; //住所を指定
+    var geocoder = new google.maps.Geocoder();  
+console.log("test");
   geocoder.geocode({ address: address }, function(results, status){
     if (status === 'OK' && results[0]){
 
