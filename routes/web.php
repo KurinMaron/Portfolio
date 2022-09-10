@@ -16,7 +16,10 @@ Route::get('/', 'PostController@index');
 Route::post('/posts', 'PostController@store');
 Route::get('/posts/create', 'PostController@create');
 Route::get('/shows/{post}', 'PostController@show');
+
 Route::get('/posts/{post}','PostController@detail');
+Route::get('/posts/like/{id}', 'PostController@like')->name('post.like');
+Route::get('/posts/unlike/{id}', 'PostController@unlike')->name('post.unlike');
 Route::put('/posts/{post}', 'PostController@update');
 Route::delete('/posts/{post}', 'PostController@delete');
 Route::get('/posts/{post}/edit', 'PostController@edit');
@@ -24,7 +27,9 @@ Route::get('/posts/{post}/edit', 'PostController@edit');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/mypage', 'HomeController@index')->name('mypage');
+
+
 
 Route::get('/categories/{category}', 'CategoryController@index');
 

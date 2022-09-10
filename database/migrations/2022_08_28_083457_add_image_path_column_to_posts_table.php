@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageColumnToPostsTable extends Migration
+class AddImagePathColumnToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddImageColumnToPostsTable extends Migration
      */
     public function up()
     {
-         Schema::table('posts', function (Blueprint $table) {
-            $table->string('image', 100)->nullable();
-         });
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('image_path')->nullable();
+        });
     }
 
     /**

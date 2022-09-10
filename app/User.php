@@ -48,6 +48,22 @@ class User extends Authenticatable
     
     public function getOwnPaginateByLimit(int $limit_count = 5)
     {
-        return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+    //Likeに対するリレーション
+    
+    //「1対多」
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
+    
+    function getLikes(int $limit_count =5)
+    {
+        return $this->find(Auth::id())->likes()->get('post_id');
+    }
+    
+    
+   
 }

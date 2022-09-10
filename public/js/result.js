@@ -1,7 +1,8 @@
+
 //googleMapsAPIの表示にcallback=initMapと記述したためinitMap関数を作成
 function initMap() {
     var target = document.getElementById('map'); //マップを表示する要素を指定
-  var address = '東京都新宿区西新宿2-8-1'; //住所を指定
+  var address = point; //住所を指定
   var geocoder = new google.maps.Geocoder();  
 
   geocoder.geocode({ address: address }, function(results, status){

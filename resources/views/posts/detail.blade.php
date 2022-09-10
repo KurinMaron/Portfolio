@@ -12,7 +12,18 @@
     <body>
         @extends('layouts.app')　
         @section('content')
+        <div class="back">[<a href="/">back</a>]</div>
+        
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+        
+        <div>
+            @if($post->is_liked_by_auth_user())
+            <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">行きたい</a>
+            @else
+            <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">行きたい</a>
+            @endif
+        </div>
+        <p>行きたい総数{{ $post->likes->count() }}</p>
         
          <h1 class='spot'>
              聖地 <a href="/posts/{{ $post->id }}">{{ $post->spot }}</a>
@@ -34,10 +45,18 @@
             </div>
         </div>
         
-        //google map
+        
+    
+        @if ($post->image_path)
+        <img src="{{ $post->image_path }}">
+        @endif
+        
+        
+        {{--google map--}}
         <div id="map" style="height:500px">
         </div>
         
+        <script>const point = @json($post->address)</script>
         <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ config("services.googlemap.key") }}&callback=initMap" async defer>
 
         <div class="back">[<a href="/">back</a>]</div>

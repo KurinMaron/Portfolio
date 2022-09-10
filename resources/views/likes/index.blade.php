@@ -11,19 +11,8 @@
         @extends('layouts.app')　
         @section('content')
         
-        <form method="GET" action="/">
-            @csrf
-            <input type="text" placeholder="作品名" name="search" value="@if (isset($search)) {{ $search }} @endif">
-            <div>
-                <button type="submit">検索</button>
-            </div>
-        </form>
-        
-        <a class="mb-3 mx-3" href="/mypage">マイページ</a>
-        
         <div class='posts'>
             @foreach($posts as $post)
-            
             <div class='post'>
                 <h3 class="spot">聖地
                     <a href="/posts/{{ $post->id }}">{{ $post->spot }}</a>
@@ -38,11 +27,14 @@
                 <p>{{ $post->user->name }}</p>
             </div>
             
+            <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit">delete</button> 
+            </form>
+            
             @endforeach
-        </div>
-        
-        [<a href='/posts/create'>create</a>]<br>
-        
+       
         <div class='paginate'>
             {{ $posts->appends(Request::only('search'))->links() }}
         </div>

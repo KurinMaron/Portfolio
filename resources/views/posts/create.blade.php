@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>オタマップ　検索一覧</title>
+        <title>オタマップ　投稿</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <body>
@@ -10,7 +10,7 @@
         @section('content')
         <header><h1>オタマップ</h1></header>
         
-         <form action="/posts" method="POST">
+            <form action="{{ action('PostController@store') }}" method ="post" enctype="multipart/form-data">
             @csrf
             <div class="spot">
                 <h2>聖地名</h2>
@@ -41,8 +41,12 @@
                 @endforeach
                 </select>
             </div>
+            
+                <input type="file" name="image">
+            
             <input type="submit" value="保存"/>
-        </form>
+            </form>
+        
         <div class="back">[<a href="/">back</a>]</div>
         @endsection
     </body>
