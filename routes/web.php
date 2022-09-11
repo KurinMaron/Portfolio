@@ -29,7 +29,7 @@ Auth::routes();
 
 Route::get('/mypage', 'HomeController@index')->name('mypage');
 
-
+Route::get('/titles/{title}', 'TitleController@index');
 
 Route::get('/categories/{category}', 'CategoryController@index');
 

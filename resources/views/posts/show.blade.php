@@ -18,7 +18,7 @@
         </h1>
                
         <h1 class="title">作品名
-            {{ $post->title }}
+            {{ $post->title->name }}
         </h1>
         
         <div class="content">

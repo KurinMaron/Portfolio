@@ -30,7 +30,7 @@
                 </h3>
                 
                 <h4 class="title">作品名
-                    <a href="/shows/{{ $post->id }}">{{ $post->title }}</a>
+                    <a href="/shows/{{ $post->title->id }}">{{ $post->title->name }}</a>
                 </h4>
                 
                 <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a><br>

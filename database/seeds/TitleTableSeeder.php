@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoryTableSeeder extends Seeder
+class TitleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,21 +11,22 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        $publisher = [
-            '不明', 'ジャンプ', 'マガジン', 'きらら', 'ラノベ','その他'
+        $title = [
+            'ゆるキャン', '五等分の花嫁', '物語シリーズ', '青春ブタ野郎はバニーガール先輩の夢を見ない', 
+            '咲','ゆゆ式'
             ];
             
         $params = array();
         for ($i=0; $i<6; $i++) {
         $params[] = [
         'id' => $i + 1,
-        'name' => $publisher[$i],
+        'name' => $title[$i],
          ];
         }
         
         
         foreach($params as $param){
-            DB::table('categories')->insert($param); 
+            DB::table('titles')->insert($param); 
         }
     }
 }

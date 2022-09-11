@@ -10,6 +10,17 @@ class Post extends Model
 {
     use SoftDeletes;
     
+     protected $fillable = [
+        'title',
+        'body',
+        'spot',
+        'category_id',
+        'user_id',
+        'address',
+        'image_path',
+        'title_id'
+    ];
+    
     //Categoryに対するリレーション
        
     //「1対多」の関係なので単数系に
@@ -24,6 +35,14 @@ class Post extends Model
     public function likes()
     {
         return $this->hasMany(Like::class, 'post_id');
+    }
+    
+    //Titleに対するリレーション
+    
+    //「1対多」
+    public function title()
+    {
+        return $this->belongsTo('App\Title');
     }
     
     /**
@@ -52,20 +71,12 @@ class Post extends Model
      return $this->likes()->with('post')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }   
     
-    protected $fillable = [
-        'title',
-        'body',
-        'spot',
-        'category_id',
-        'user_id',
-        'address',
-        'image_path'
-    ];
     
     function getPaginateByLimit(int $limit_count = 5)
     {
         return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
         return $this::with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('title')->orderBy('updated_at', 'DESC')->paginate($limit_count);
        
     }
 

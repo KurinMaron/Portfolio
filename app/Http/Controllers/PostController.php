@@ -6,6 +6,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Category;
+use App\Title;
 use App\Spot;
 use Storage;
 use App\Like;
@@ -87,10 +88,10 @@ class PostController extends Controller
         return redirect()->back();
     }
     
-    public function create(Category $category)
+    public function create(Category $category, Title $title)
     {
-        return view('posts/create')->with(['categories' => $category->get()]);;
-        
+        return view('posts/create')->with(['categories' => $category->get(), 'titles' => $title->get()]);;
+       
     }
     
     public function store(PostRequest $request, Post $post)

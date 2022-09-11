@@ -8,15 +8,15 @@ class Category extends Model
 {
     //Postに対するリレーション
 
-   //「1対多」の関係なので'posts'と複数形に
-public function posts()   
-{
-    return $this->hasMany('App\Post');  
-}
+    //「1対多」の関係なので'posts'と複数形に
+    public function posts()   
+    {
+        return $this->hasMany('App\Post');  
+    }
 
-//カテゴリーごとに投稿を取得する処理
-public function getByCategory(int $limit_count = 5)
-{
-     return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
-}
+    //カテゴリーごとに投稿を取得する処理
+    public function getByCategory(int $limit_count = 5)
+    {
+        return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }
