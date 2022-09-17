@@ -15,8 +15,8 @@ Route::group(['middleware' => ['auth']], function(){
 Route::get('/', 'PostController@index');
 Route::post('/posts', 'PostController@store');
 Route::get('/posts/create', 'PostController@create');
-Route::get('/shows/{post}', 'PostController@show');
-
+Route::get('/shows/{title}', 'PostController@show');
+Route::resource('messages', 'MessageController', ['only' => ['store']]);
 Route::get('/posts/{post}','PostController@detail');
 Route::get('/posts/like/{id}', 'PostController@like')->name('post.like');
 Route::get('/posts/unlike/{id}', 'PostController@unlike')->name('post.unlike');
@@ -28,8 +28,6 @@ Route::get('/posts/{post}/edit', 'PostController@edit');
 Auth::routes();
 
 Route::get('/mypage', 'HomeController@index')->name('mypage');
-
-Route::get('/titles/{title}', 'TitleController@index');
 
 Route::get('/categories/{category}', 'CategoryController@index');
 

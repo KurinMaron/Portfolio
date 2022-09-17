@@ -64,6 +64,12 @@ class User extends Authenticatable
         return $this->find(Auth::id())->likes()->get('post_id');
     }
     
-    
+   //Messageに対するリレーション
+   
+   //「1対多」
+   public function messages()
+   {
+       return $this->hasMany('App\Message');
+   }
    
 }

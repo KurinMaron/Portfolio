@@ -10,11 +10,12 @@ use App\Title;
 use App\Spot;
 use Storage;
 use App\Like;
+use App\Message;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function index(Request $request, Post $post)
+    public function index(Request $request, Post $post, Like $like)
     {
         // 検索フォームで入力された値を取得する
         $search = $request->input('search');
@@ -43,7 +44,10 @@ class PostController extends Controller
             
         }
         
-        return view('posts/index')->with(['posts' => $posts,'search' => $search,]);
+        //ランキング
+        $ranks = Post::withCount('likes')->orderBy('likes_count', 'desc')->take(3)->get();
+        
+        return view('posts/index')->with(['posts' => $posts, 'search' => $search, 'ranks' => $ranks]);
     }
     
     public function mypage(Post $post)
@@ -51,14 +55,16 @@ class PostController extends Controller
         return view('mypage')->with(['likes' => $post->getByPost()]);
     }
     
-    public function show(Post $post)
+    public function show(Post $post, Message $message, Title $title, Category $category)
     {
-    return view('posts/show')->with(['post' => $post]);
+        $messages = $message->where('title_id', $title->id)->get();
+        //dd($title);
+        return view('posts/show')->with(['post' => $post, 'messages' => $messages, 'title' => $title, 'categories' => $category]);
     }
     
     public function detail(Post $post)
     {
-    return view('posts/detail')->with(['post' => $post]);
+        return view('posts/detail')->with(['post' => $post]);
     }
     
     public function __construct()
@@ -94,9 +100,13 @@ class PostController extends Controller
        
     }
     
-    public function store(PostRequest $request, Post $post)
+    public function store(PostRequest $request, Post $post, Title $title)
     {
+  
         $input = $request['post'];
+       
+        //$input = $request['title_id'];
+        //dd($input);
         $input += ['user_id' => $request->user()->id];
             
          //画像アップロード
