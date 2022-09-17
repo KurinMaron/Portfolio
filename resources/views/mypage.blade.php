@@ -24,7 +24,7 @@
                 </h3>
                 
                 <h4 class="title">作品名
-                    <a href="/shows/{{ $post->id }}">{{ $post->title }}</a>
+                    <a href="/shows/{{ $post->title->id }}">{{ $post->title->name }}</a>
                 </h4>
                 
                 <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a><br>
@@ -46,7 +46,7 @@
                 </h3>
                 
                 <h4 class="title">作品名
-                    <a href="/shows/{{ $like->id }}">{{ $like->title }}</a>
+                    <a href="/shows/{{ $like->title->id }}">{{ $like->title->name }}</a>
                 </h4>
                 
                 <a href="/categories/{{ $like->category->id }}">{{ $like->category->name }}</a><br>

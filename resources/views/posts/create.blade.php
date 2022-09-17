@@ -8,7 +8,6 @@
     <body>
         @extends('layouts.app')　
         @section('content')
-        <header><h1>オタマップ</h1></header>
         
             <form action="{{ action('PostController@store') }}" method ="post" enctype="multipart/form-data">
             @csrf
@@ -29,6 +28,7 @@
                     <option value="{{ $title->id }}">{{ $title->name }}</option>
                 @endforeach
                 </select>
+                
             </div>
             
             <div class="body">
