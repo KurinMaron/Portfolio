@@ -10,17 +10,26 @@ use App\Title;
 use App\Spot;
 use Storage;
 use App\Like;
+use App\Message;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function index(Request $request, Post $post)
+    public function index()
     {
+        return view('posts/index');
+    }
+    
+    public function search(Request $request, Post $post, Like $like, Title $title)
+    {
+        //ランキング
+        $ranks = Post::withCount('likes')->orderBy('likes_count', 'desc')->take(3)->get();
+        
         // 検索フォームで入力された値を取得する
         $search = $request->input('search');
 
         // クエリビルダ
-        $query = Post::query();
+        $query = Title::query();
         
         //もし検索フォームにキーワードが入力されたら
         if ($search){
@@ -33,17 +42,35 @@ class PostController extends Controller
 
             // 単語をループで回し、部分一致するものがあれば、$queryとして保持される
             foreach($wordArraySearched as $value) {
-                $query->where('title', 'like', '%'.$value.'%');
+                $query->where('name', 'like', '%'.$value.'%');
              }
              
-             $posts = $query->orderBy('created_at','desc')->paginate(1);
+             $title = $query->orderBy('created_at','desc')->with('posts.likes','posts.user')->paginate(2);
+             //dd($title);
+             
+            
+             return view('posts/search')->with(['search' => $search, 'ranks' => $ranks, 'titles' => $title]);
              
         }else{
-            $posts = $post->getPaginateByLimit();
-            
+            // $posts = $post->getPaginateByLimit();
+            return view('posts/search')->with(['search' => $search, 'ranks' => $ranks, 'titles' => $title->with('posts.likes','posts.user')->paginate(2)]);
         }
         
-        return view('posts/index')->with(['posts' => $posts,'search' => $search,]);
+        /*
+        $query = Post::query();
+        
+        $search = Post::whereIn('title_id', function ($query) use ($request) {
+            $query->from('titles')
+                ->select('titles.id')
+                ->where('titles.name', $request->name);
+        })->get();
+        //dd($request);
+        
+        $posts = $query->with('title', 'user', 'likes')->orderBy('created_at','desc')->paginate(3);
+        //dd($posts);
+       */
+       
+        
     }
     
     public function mypage(Post $post)
@@ -51,14 +78,16 @@ class PostController extends Controller
         return view('mypage')->with(['likes' => $post->getByPost()]);
     }
     
-    public function show(Post $post)
+    public function show(Post $post, Message $message, Title $title, Category $category)
     {
-    return view('posts/show')->with(['post' => $post]);
+        $messages = $message->where('title_id', $title->id)->get();
+        //dd($title);
+        return view('posts/show')->with(['post' => $post, 'messages' => $messages, 'title' => $title, 'categories' => $category]);
     }
     
     public function detail(Post $post)
     {
-    return view('posts/detail')->with(['post' => $post]);
+        return view('posts/detail')->with(['post' => $post]);
     }
     
     public function __construct()
@@ -94,9 +123,13 @@ class PostController extends Controller
        
     }
     
-    public function store(PostRequest $request, Post $post)
+    public function store(PostRequest $request, Post $post, Title $title)
     {
+  
         $input = $request['post'];
+       
+        //$input = $request['title_id'];
+        //dd($input);
         $input += ['user_id' => $request->user()->id];
             
          //画像アップロード

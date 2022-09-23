@@ -16,12 +16,18 @@ class TitleTableSeeder extends Seeder
             '咲','ゆゆ式'
             ];
             
+        $body = [
+            'あfろ', '春場ねぎ', '西尾維新', '鴨志田一', '小林立', '三上小又'
+            ];
+            
         $params = array();
         for ($i=0; $i<6; $i++) {
         $params[] = [
         'id' => $i + 1,
         'name' => $title[$i],
+        'body' => $body[$i],
          ];
+         
         }
         
         

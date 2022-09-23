@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>オタマップ　マイページ</title>
+        <title>オタマップ　検索</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -15,8 +15,10 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/css/app.css">
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/search.css') }}" rel="stylesheet">
+        
     </head>
     <body id="page-top">
         @extends('layouts.app')　
@@ -38,76 +40,9 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h3 class="mb-5"><em>オタク活動支援サイト</em></h3>
                 <h1 class="mb-1">オタマップ</h1>
+               {{--<a class="btn btn-primary btn-xl" href="#about">オタマップとは...</a>--}}
             </div>
         </header>
-        
-        <h1><?php $user = Auth::user(); ?>{{ $user->name }}</h1>
-        
-        <div class='posts'>
-            
-            <h2>投稿一覧</h2>
-            <div class="container">  
-        <div class="posts">
-            @foreach($posts as $post)
-            <div class="col-8 my-4">
-                <div class="card mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-4">
-                            <img class="img-fluid" src="">
-                        </div>
-                        <div class="col-8">
-                            <div class="post card-body">
-                                <h5 class="spot card-title">スポット<a href="/posts/{{ $post->id }}">{{ $post->spot }}</a></h5>
-                                <h6 class="title card-text">作品名<a href="/shows/{{ $post->title->id }}">{{ $post->title->name }}</a></h6>
-                                <p class="card-text">行きたい総数{{ $post->likes->count() }}</p>
-                                <p class="card-text"><small class="text-muted">投稿者 {{ $post->user->name }}</small></p>
-                                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit">delete</button> 
-            </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            @endforeach
-        </div>
-        </div> 
-              
-        <div class='paginate'>
-            {{ $posts->appends(Request::only('search'))->links() }}
-        </div>
-            
-            
-           
-            
-            <h2>行きたい一覧</h2>
-            @foreach($likes as $like)
-                <h3 class="spot">聖地
-                    <a href="/posts/{{ $like->id }}">{{ $like->spot }}</a>
-                </h3>
-                
-                <h4 class="title">作品名
-                    <a href="/shows/{{ $like->title->id }}">{{ $like->title->name }}</a>
-                </h4>
-                
-                {{--<a href="/categories/{{ $like->category->id }}">{{ $like->category->name }}</a><br>--}}
-                
-            </div>
-            
-            @endforeach
-        </div>
-        
-        [<a href='/posts/create'>create</a>]<br>
-        
-        <div class="back">[<a href="/">back</a>]</div>
-        
-        <div class='paginate'>
-            {{ $posts->appends(Request::only('search'))->links() }}
-        </div>
         
         {{--
         <!-- オタマップについて-->
@@ -164,68 +99,67 @@
         </section>
         --}}
         
-        {{--
-        <div class="form_group">
-                    <form method="GET" action="/" class="text-center">
+                
+                <div class="input-group justify-content-center">
+                    <form method="GET" action="/titles/search" class="form-inline">
                         @csrf
-                        <div style="height: 100px;">
-                            <input  type="text" class="form-control w-75 h-75" placeholder="住所" name="search" value="@if (isset($search)) {{ $search }} @endif"/>
-                            <button type="submit" class="btn btn-success">検索</button>
-                        </div>
+                        <input type="text" class="form-control" placeholder="キーワードを入力" name="search" value="{{ $search }}" style="width:50rem"/>
+                        <button class="btn btn-outline-success" type="submit" id="button-addon2"><i class="fas fa-search"></i> 検索</button>
                     </form>
                 </div>
-              
-        
-        
-                <div class='posts'>
-                    @foreach($posts as $post)
             
-                        <div class='post'>
-                            <h3 class="spot">聖地
-                                <a href="/posts/{{ $post->id }}">{{ $post->spot }}</a>
-                            </h3>
+            <h2>ランキング</h2>              
+            <div class="container">
                 
-                            <p>行きたい総数{{ $post->likes->count() }}</p>
-                
-                            <h4 class="title">作品名
-                                <a href="/shows/{{ $post->title->id }}">{{ $post->title->name }}</a>
-                            </h4>
-                
-                            <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a><br>
-                
-                            <p>投稿者 {{ $post->user->name }}</p>
-                
+                        <div class="ranks card-group text-center justify-content-center" style="width:60rem">
+                            
+                            @foreach($ranks as $rank)
+                                <div class="posts">
+                                    <div class="card" style="width:20rem">
+                                        <div class="card-header">{{ $loop->iteration }}位</div>
+                                        <img class="card-img-top" src="">
+                                        <div class="card-body">
+                                            <h4 class="card-title"><a href="/posts/{{ $rank->id }}">{{ $rank->spot }}</a></h4>
+                                            <h6 class="card-subtitle">行きたい総数{{ $rank->likes->count() }}</h6>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                             @endforeach
+                            </div>
                         </div>
-            
-                    @endforeach
-                </div>
-        
-                <div class="ranks row">
-                    <div class="col-6">
-                        
+               
+        <div class="container">  
+        <div class="posts">
+            @foreach($posts as $post)
+            <div class="col-8 my-4">
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-4">
+                            <img class="img-fluid" src="">
+                        </div>
+                        <div class="col-8">
+                            <div class="post card-body">
+                                <h5 class="spot card-title">スポット<a href="/posts/{{ $post->id }}">{{ $post->spot }}</a></h5>
+                                <h6 class="title card-text">作品名<a href="/shows/{{ $post->title->id }}">{{ $post->title->name }}</a></h6>
+                                <p class="card-text">行きたい総数{{ $post->likes->count() }}</p>
+                                <p class="card-text"><small class="text-muted">投稿者 {{ $post->user->name }}</small></p>
+                            </div>
+                        </div>
                     </div>
-                    <h2>ランキング </h2>
-                    @foreach($ranks as $rank)
-            
-                        <div class="posts">
-                             
-                            <h3 class="spot">聖地{{ $loop->iteration }}位
-                                <a href="/posts/{{ $post->id }}">{{ $rank->spot }}</a>
-                            </h3>
-                    
-                            <p>行きたい総数{{ $rank->likes->count() }}</p>
-                    
-                        </div>
-                    @endforeach
                 </div>
-        
-                [<a href='/posts/create'>create</a>]<br>
-        
-                <div class='paginate'>
-                    {{ $posts->appends(Request::only('search'))->links() }}
-                </div>
-                --}}
-        
+            </div>
+            @endforeach
+        </div>
+        </div> 
+              
+        <div class='paginate'>
+            {{ $posts->appends(Request::only('search'))->links() }}
+        </div>
+      
+
+  
+    
         {{--
         <!-- Callout-->
         <section class="callout">
@@ -307,7 +241,7 @@
             <br />
             <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
         </div>
-        --}}
+        
         
         <!-- Footer-->
         <footer class="footer text-center">
@@ -326,6 +260,8 @@
                 <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
             </div>
         </footer>
+        --}}
+        
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->
