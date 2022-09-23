@@ -24,6 +24,6 @@ class Title extends Model
     
     public function getByTitle(int $limit_count = 5)
     {
-     return $this->posts()->with('title')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->posts()->with('title')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

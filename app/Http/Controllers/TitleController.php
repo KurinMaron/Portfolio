@@ -8,5 +8,5 @@ use App\Message;
 
 class TitleController extends Controller
 {
-   //
+//
 }
