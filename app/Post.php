@@ -79,6 +79,11 @@ class Post extends Model
         return $this::with('title')->orderBy('updated_at', 'DESC')->paginate($limit_count);
        
     }
+    
+    public function getByTitle(int $limit_count = 5)
+    {
+        return $this->posts()->with('title')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 
     //Userに対するリレーション
     
