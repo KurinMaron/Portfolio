@@ -29,9 +29,6 @@
                 <li class="sidebar-brand"><a href="/mypage">マイページ</a></li>
                 <li class="sidebar-nav-item"><a href="/">TOP</a></li>
                 <li class="sidebar-nav-item"><a href="/search">検索</a></li>
-                <li class="sidebar-nav-item"><a href="/posts/create">投稿</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <!-- Header-->
@@ -39,7 +36,6 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h3 class="mb-5"><em>オタク活動支援サイト</em></h3>
                 <h1 class="mb-1">オタマップ</h1>
-                <a class="btn btn-primary btn-xl" href="#about">オタマップとは...</a>
             </div>
         </header>
         
@@ -48,11 +44,9 @@
             <div class="container px-4 px-lg-5 text-center">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-10">
-                        <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
+                        <h2>オタマップはより快適なオタ活をするためのサイトです！</h2>
                         <p class="lead mb-5">
-                            This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-                            <a href="https://unsplash.com/">Unsplash</a>
-                            !
+                            そのためにはみなさんの協力が必要です！！
                         </p>
                         <a class="btn btn-dark btn-xl" href="#services">オタマップでできること</a>
                     </div>
@@ -68,16 +62,13 @@
                     <h2 class="mb-5">オタマップでできること</h2>
                 </div>
                 <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
-                        <h4><strong>Responsive</strong></h4>
-                        <p class="text-faded mb-0">Looks great on any screen size!</p>
-                    </div>
+                    
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
                         <h4><strong>投稿</strong></h4>
-                        <p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
+                        <p class="text-faded mb-0">流行りの聖地巡礼に限らず、コラボカフェやイベント情報の投稿もOK！</p>
                     </div>
+                    
                     <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
                         <h4><strong>行きたい！</strong></h4>
@@ -88,33 +79,23 @@
                             スポット一覧を確認できます
                         </p>
                     </div>
+                    
                     <div class="col-lg-3 col-md-6">
                         <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
-                        <h4><strong>Question</strong></h4>
-                        <p class="text-faded mb-0">I mustache you a question...</p>
+                        <h4><strong>作品掲示板</strong></h4>
+                        <p class="text-faded mb-0">作品に対する熱い想いを作品詳細ページの掲示板に書き込み！</p>
                     </div>
+                    
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
+                        <h4><strong>Responsive</strong></h4>
+                        <p class="text-faded mb-0">Looks great on any screen size!</p>
+                    </div>
+                    
                 </div>
             </div>
         </section>
         
-
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <ul class="list-inline mb-5">
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
-                    </li>
-                </ul>
-                <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
-            </div>
-        </footer>
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->

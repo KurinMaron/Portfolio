@@ -47,7 +47,7 @@
                 <div class="input-group justify-content-center">
                     <form method="GET" action="/search" class="form-inline">
                         @csrf
-                        <input type="text" class="form-control" placeholder="キーワードを入力" name="search" value="{{ $search }}" style="width:50rem"/>
+                        <input type="text" class="form-control" placeholder="作品名を入力" name="search" value="{{ $search }}" style="width:50rem"/>
                         <button class="btn btn-outline-success" type="submit" id="button-addon2"><i class="fas fa-search"></i> 検索</button>
                     </form>
                 </div>
@@ -82,14 +82,16 @@
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-4">
+                            
                              @if ($post->image_path)
                             <img class="img-fluid" src="{{ $post->image_path }}">
                             @endif
+                            
                         </div>
                         <div class="col-8">
                             <div class="post card-body">
                                 <h5 class="spot card-title">スポット<a href="/posts/{{ $post->id }}">{{ $post->spot }}</a></h5>
-                                <h6 class="title card-text">作品名<a href="/shows/{{ $post->id }}">{{ $title->name }}</a></h6>
+                                <h6 class="title card-text">作品名<a href="/shows/{{ $title->id }}">{{ $title->name }}</a></h6>
                                 <p class="card-text">行きたい総数{{ $post->likes->count() }}</p>
                                 <p class="card-text"><small class="text-muted">投稿者 {{ $post->user->name }}</small></p>
                             </div>

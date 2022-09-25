@@ -46,30 +46,13 @@ class PostController extends Controller
              }
              
              $title = $query->orderBy('created_at','desc')->with('posts.likes','posts.user')->paginate(2);
-             //dd($title);
              
             
              return view('posts/search')->with(['search' => $search, 'ranks' => $ranks, 'titles' => $title]);
              
         }else{
-            // $posts = $post->getPaginateByLimit();
             return view('posts/search')->with(['search' => $search, 'ranks' => $ranks, 'titles' => $title->with('posts.likes','posts.user')->paginate(2)]);
         }
-        
-        /*
-        $query = Post::query();
-        
-        $search = Post::whereIn('title_id', function ($query) use ($request) {
-            $query->from('titles')
-                ->select('titles.id')
-                ->where('titles.name', $request->name);
-        })->get();
-        //dd($request);
-        
-        $posts = $query->with('title', 'user', 'likes')->orderBy('created_at','desc')->paginate(3);
-        //dd($posts);
-       */
-       
         
     }
     
@@ -117,19 +100,19 @@ class PostController extends Controller
         return redirect()->back();
     }
     
-    public function create(Category $category, Title $title)
+    public function create(Title $title)
     {
-        return view('posts/create')->with(['categories' => $category->get(), 'titles' => $title->get()]);;
+        //dd($title->name);
+        return view('posts/create')->with(['title' => $title]);;
        
     }
     
     public function store(PostRequest $request, Post $post, Title $title)
     {
-  
+        
         $input = $request['post'];
-       
-        //$input = $request['title_id'];
         //dd($input);
+    
         $input += ['user_id' => $request->user()->id];
             
          //画像アップロード

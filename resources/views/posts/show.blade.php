@@ -47,12 +47,14 @@
             {{ $title->name }}
         </h1>
         
+       <button type="submit">
+           <a href="/create/{{ $title->id }}">投稿</a>
+        </button>
+        
         <div class="content">
             <div class="content__post">
-                <h4>作品詳細</h4>
-                <p>{{ $title->body }}</p>  
-               {{-- <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>--}}
-            </div>
+                <h4>作者</h4>
+                <p>{{ $title->author }}</p>  
         </div>
         
         <div class="row justify-content-center">

@@ -30,7 +30,6 @@
                 <li class="sidebar-brand"><a href="/mypage">マイページ</a></li>
                 <li class="sidebar-nav-item"><a href="/">TOP</a></li>
                 <li class="sidebar-nav-item"><a href="/search">検索</a></li>
-                <li class="sidebar-nav-item"><a href="/posts/create">投稿</a></li>
                 <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
                 <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
             </ul>
@@ -54,20 +53,16 @@
             
             <div class="address">
                 <h2>住所</h2>
-                <input type="text" name="post[address]" placeholder="地名" value="{{ old('post.address') }}"/>
+                <input type="text" name="post[address]" placeholder="住所" value="{{ old('post.address') }}"/>
             </div>
-            
             
             <div class="title">
                 <h2>作品名</h2>
-                <select name="post[title_id]">
-                @foreach($titles as $title)
-                    <option value="{{ $title->id }}">{{ $title->name }}</option>
-                @endforeach
-                </select>
-                
+                <p>{{ $title->name }}</p>
+                <input type="hidden" name=post[title_id] value={{$title->id}} />
             </div>
             
+           
             <div class="body">
                 <h2>投稿内容</h2>
                 <textarea name="post[body]" placeholder="本文">{{ old('post.body') }}</textarea>
@@ -106,7 +101,7 @@
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
+       
        
         
         @endsection
