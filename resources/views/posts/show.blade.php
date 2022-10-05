@@ -19,92 +19,84 @@
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
         <script src="{{ asset('js/scripts.js') }}"></script>
     </head>
+    
     <body id="page-top">
         @extends('layouts.app')　
         @section('content')
-        <!-- ハンバーガーアイコン-->
-        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
-        <nav id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="/mypage">マイページ</a></li>
-                <li class="sidebar-nav-item"><a href="/">TOP</a></li>
-                <li class="sidebar-nav-item"><a href="/search">検索</a></li>
-                <li class="sidebar-nav-item"><a href="/posts/create">投稿</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <!-- Header-->
-        <header class="masthead d-flex align-items-center">
-            <div class="container px-4 px-lg-5 text-center">
-                <h3 class="mb-5"><em>オタク活動支援サイト</em></h3>
-                <h1 class="mb-1">オタマップ</h1>
-            </div>
-        </header>
+        
+            <!-- ハンバーガーアイコン-->
+            <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+            <nav id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand"><a href="/mypage">マイページ</a></li>
+                    <li class="sidebar-nav-item"><a href="/">TOP</a></li>
+                    <li class="sidebar-nav-item"><a href="/search">検索</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Header-->
+            <header class="masthead d-flex align-items-center">
+                <div class="container px-4 px-lg-5 text-center">
+                    <h3 class="mb-5"><em>オタク活動支援サイト</em></h3>
+                    <h1 class="mb-1">オタマップ</h1>
+                </div>
+            </header>
         
         
-        <h1 class="title">作品名
-            {{ $title->name }}
-        </h1>
+            <h1 class="title">作品名『{{ $title->name }}』</h1>
         
-       <button type="submit">
-           <a href="/create/{{ $title->id }}">投稿</a>
-        </button>
+            <button type="submit"><a href="/create/{{ $title->id }}">投稿</a></button>
         
-        <div class="content">
-            <div class="content__post">
-                <h4>作者</h4>
-                <p>{{ $title->author }}</p>  
-        </div>
-        
-        <div class="row justify-content-center">
-        <div class="col-md-8 mb-3">
-            <ul class="list-group">
-                @forelse ($messages as $message)
-                    <li class="list-group-item">
-                        <div class="py-3 w-100 d-flex">
-                           {{-- <img src="{{ asset('storage/profile_image/' .$message->user->profile_image) }}" class="rounded-circle" width="50" height="50">--}}
-                            <div class="ml-2 d-flex flex-column">
-                                <p class="mb-0">{{ $message->user->name }}</p>
-                                {{--<a href="{{ url('users/' .$message->user->id) }}" class="text-secondary">{{ $message->user->screen_name }}</a>--}}
-                            </div>
-                            <div class="d-flex justify-content-end flex-grow-1">
-                                <p class="mb-0 text-secondary">{{ $message->created_at->format('Y-m-d H:i') }}</p>
-                            </div>
-                        </div>
-                        <div class="py-3">
-                            {!! nl2br(e($message->body)) !!}
-                        </div>
-                    </li>
-                @empty
-                    <li class="list-group-item">
-                        <p class="mb-0 text-secondary">コメントはまだありません。</p>
-                    </li>
-                @endforelse
-                <li class="list-group-item">
-                    <div class="py-3">
-                        <form method="POST" action="{{ route('messages.store') }}">
-                            @csrf
+            <div class="content">
+                <div class="content__post">
+                    <h3>作者 : {{ $title->author }}</h3>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-12 p-3 w-100 d-flex">
-                                   {{--<img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">--}}
+                </div>
+        
+        
+        
+        
+            <div class="row justify-content-center">
+                <div class="col-md-8 mb-3">
+                    <ul class="list-group">
+                        @forelse ($messages as $message)
+                            <li class="list-group-item">
+                                <div class="py-3 w-100 d-flex">
                                     <div class="ml-2 d-flex flex-column">
-                                       {{-- <p class="mb-0">{{ $user->name }}</p>--}}
-                                        {{--<a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->screen_name }}</a>--}}
+                                        <p class="mb-0">{{ $message->user->name }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-end flex-grow-1">
+                                        <p class="mb-0 text-secondary">{{ $message->created_at->format('Y-m-d H:i') }}</p>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <input type="hidden" name="title_id" value="{{ $title->id }}">
-                                    <textarea class="form-control @error('body') is-invalid @enderror" name="body" required autocomplete="text" rows="4">{{ old('body') }}</textarea>
-
-                                    @error('body')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="py-3">
+                                    {!! nl2br(e($message->body)) !!}
                                 </div>
-                            </div>
+                            </li>
+                        @empty
+                        <li class="list-group-item">
+                            <p class="mb-0 text-secondary">コメントはまだありません。</p>
+                        </li>
+                        @endforelse
+                        <li class="list-group-item">
+                            <div class="py-3">
+                                <form method="POST" action="{{ route('messages.store') }}">
+                                @csrf
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-12 p-3 w-100 d-flex">
+                                        <div class="ml-2 d-flex flex-column"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="hidden" name="title_id" value="{{ $title->id }}"/>
+                                        <textarea class="form-control @error('body') is-invalid @enderror" name="body" required autocomplete="text" rows="4">{{ old('body') }}</textarea>
+
+                                        @error('body')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-12 text-right">
@@ -114,36 +106,20 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </li>
-            </ul>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
         
         <div class="footer">
             <a href="/">戻る</a>
         </div>
        
         
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <ul class="list-inline mb-5">
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
-                    </li>
-                </ul>
-                <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
-            </div>
-        </footer>
+        
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->

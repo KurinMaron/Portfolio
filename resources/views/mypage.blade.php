@@ -29,9 +29,6 @@
                 <li class="sidebar-brand"><a href="/mypage">マイページ</a></li>
                 <li class="sidebar-nav-item"><a href="/">TOP</a></li>
                 <li class="sidebar-nav-item"><a href="/search">検索</a></li>
-                <li class="sidebar-nav-item"><a href="/posts/create">投稿</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <!-- Header-->
@@ -42,41 +39,43 @@
             </div>
         </header>
         
-        <h1><?php $user = Auth::user(); ?>{{ $user->name }}</h1>
+        <div class="container">
+            <div class="col-4">
+                <h1>user:<?php $user = Auth::user(); ?>{{ $user->name }}</h1>
+            </div>
         
-        <div class='posts'>
+       
             
-            <h2>投稿一覧</h2>
-            <div class="container">  
-        <div class="posts">
-            @foreach($posts as $post)
-            <div class="col-8 my-4">
-                <div class="card mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-4">
-                            <img class="img-fluid" src="">
-                        </div>
-                        <div class="col-8">
-                            <div class="post card-body">
-                                <h5 class="spot card-title">スポット<a href="/posts/{{ $post->id }}">{{ $post->spot }}</a></h5>
-                                <h6 class="title card-text">作品名<a href="/shows/{{ $post->title->id }}">{{ $post->title->name }}</a></h6>
-                                <p class="card-text">行きたい総数{{ $post->likes->count() }}</p>
-                                <p class="card-text"><small class="text-muted">投稿者 {{ $post->user->name }}</small></p>
-                                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit">delete</button> 
-            </form>
+            <h2>過去の投稿一覧</h2>
+                <div class="posts">
+                    @foreach($posts as $post)
+                        <div class="col-9 my-3 mx-auto">
+                            <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-4 bg-secondary d-flex align-items-center">
+                                        @if ($post->image_path)
+                                            <img class="img-fluid" src="{{ $post->image_path }}">
+                                        @endif
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="post card-body">
+                                            <h5 class="spot card-title">スポット<a href="/posts/{{ $post->id }}">{{ $post->spot }}</a></h5>
+                                            <h6 class="title card-text">作品名<a href="/shows/{{ $post->title->id }}">{{ $post->title->name }}</a></h6>
+                                            <p class="card-text">行きたい総数{{ $post->likes->count() }}</p>
+                                            <p class="card-text"><small class="text-muted">投稿者 {{ $post->user->name }}</small></p>
+                                            <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">delete</button> 
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            </div>
-            
-            
-            @endforeach
-        </div>
-        </div> 
+       
               
         <div class='paginate'>
             {{ $posts->appends(Request::only('search'))->links() }}
@@ -86,48 +85,39 @@
            
             
             <h2>行きたい一覧</h2>
-            @foreach($likes as $like)
-                <h3 class="spot">聖地
-                    <a href="/posts/{{ $like->id }}">{{ $like->spot }}</a>
-                </h3>
-                
-                <h4 class="title">作品名
-                    <a href="/shows/{{ $like->title->id }}">{{ $like->title->name }}</a>
-                </h4>
-                
-                {{--<a href="/categories/{{ $like->category->id }}">{{ $like->category->name }}</a><br>--}}
-                
-            </div>
             
+            @foreach($likes as $like)
+                <div class="col-9 my-3 mx-auto">
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-4 bg-secondary d-flex align-items-center">
+                            @if ($like->image_path)
+                            <img class="img-fluid" src="{{ $like->image_path }}">
+                            @endif
+                        </div>
+                        <div class="col-8">
+                            <div class="post card-body">
+                        <h4 class="spot card-title">スポット<a href="/posts/{{ $like->id }}">{{ $like->spot }}</a></h4>
+                        <h4 class="title card-text">作品名<a href="/shows/{{ $like->title->id }}">{{ $like->title->name }}</a></h4>
+                        <p class="card-text">行きたい総数{{ $like->likes->count() }}</p>
+                                <p class="card-text"><small class="text-muted">投稿者 {{ $like->user->name }}</small></p>
+                    </div>
+                </div>
+                 </div>
+                        </div>
+                    </div>
             @endforeach
-        </div>
         
         
         
-        <div class="back">[<a href="/">back</a>]</div>
+        
+        <div class="back">[<a href="/search">back</a>]</div>
         
         <div class='paginate'>
             {{ $posts->appends(Request::only('search'))->links() }}
         </div>
         
         
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <ul class="list-inline mb-5">
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
-                    </li>
-                </ul>
-                <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
-            </div>
-        </footer>
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->

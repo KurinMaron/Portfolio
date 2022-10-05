@@ -11482,7 +11482,7 @@ footer.footer .social-link:hover {
   padding-top: 8rem;
   padding-bottom: 8rem;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/bg-masthead-chara.jpg");
-  background-position: left 150px center;
+  background-position: left;
   background-repeat: no-repeat;
   background-size: 250px;
   background-color: #f7c114;

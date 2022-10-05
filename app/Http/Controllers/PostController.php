@@ -102,9 +102,7 @@ class PostController extends Controller
     
     public function create(Title $title)
     {
-        //dd($title->name);
         return view('posts/create')->with(['title' => $title]);;
-       
     }
     
     public function store(PostRequest $request, Post $post, Title $title)

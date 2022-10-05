@@ -17,6 +17,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/scripts.js') }}"></script>
         <link href="{{ asset('/css/search.css') }}" rel="stylesheet">
         
     </head>
@@ -30,9 +31,6 @@
                 <li class="sidebar-brand"><a href="/mypage">マイページ</a></li>
                 <li class="sidebar-nav-item"><a href="/">TOP</a></li>
                 <li class="sidebar-nav-item"><a href="/search">検索</a></li>
-                <li class="sidebar-nav-item"><a href="/posts/create">投稿</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <!-- Header-->
@@ -71,6 +69,14 @@
                                 </div>
                              @endforeach
                             </div>
+                    
+                    @foreach($titles as $title)
+                            <h1>作品名
+                            <a href="/shows/{{ $title->id }}">{{ $title->name }}</a>
+                            </h1>
+                    @endforeach 
+                            
+                            
                         </div>
               
         <div class="container">  
@@ -81,9 +87,9 @@
             <div class="col-8 my-4">
                 <div class="card mb-3">
                     <div class="row no-gutters">
-                        <div class="col-4">
+                        <div class="col-4 bg-secondary d-flex align-items-center">
                             
-                             @if ($post->image_path)
+                            @if ($post->image_path)
                             <img class="img-fluid" src="{{ $post->image_path }}">
                             @endif
                             
@@ -116,8 +122,6 @@
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
         @endsection
     </body>
 </html>
