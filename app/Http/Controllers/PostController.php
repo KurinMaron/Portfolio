@@ -45,13 +45,13 @@ class PostController extends Controller
                 $query->where('name', 'like', '%'.$value.'%');
              }
              
-             $title = $query->orderBy('created_at','desc')->with('posts.likes','posts.user')->paginate(2);
+             $title = $query->orderBy('created_at','desc')->with('posts.likes','posts.user')->paginate(5);
              
             
              return view('posts/search')->with(['search' => $search, 'ranks' => $ranks, 'titles' => $title]);
              
         }else{
-            return view('posts/search')->with(['search' => $search, 'ranks' => $ranks, 'titles' => $title->with('posts.likes','posts.user')->paginate(2)]);
+            return view('posts/search')->with(['search' => $search, 'ranks' => $ranks, 'titles' => $title->with('posts.likes','posts.user')->paginate(5)]);
         }
         
     }

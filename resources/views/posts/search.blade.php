@@ -72,15 +72,13 @@
                          </div>
                             
                             <h2 class="point">投稿したい作品名を検索・クリック！！</h2>
+                            <div class="text-center justify-content-center">
+                                @foreach($titles as $title)
+                                    <a href="/shows/{{ $title->id }}" class="btn btn--orange btn--cubic btn--shadow">{{ $title->name }}</a>
+                                @endforeach 
+                            </div>
                             
-                    <div class="btn-group">
-                    @foreach($titles as $title)
-                            <button type="submit"><a href="/shows/{{ $title->id }}">{{ $title->name }}</a><button>
-                    @endforeach 
-                     </div>       
-                            
-                       
-                      
+                    
               
         <div class="container">  
         <div class="posts">
