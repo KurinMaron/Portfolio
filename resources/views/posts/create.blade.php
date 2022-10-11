@@ -41,29 +41,31 @@
         </header>
         
         <div class="main">
+            <div class="container">
             
         <form action="{{ action('PostController@store') }}" method ="post" enctype="multipart/form-data">
             @csrf
-            <div class="spot">
-                <h2>スポット名</h2>
-                <input type="text" name="post[spot]" placeholder="地名" value="{{ old('post.spot') }}"/>
+            <div class="text-left justify-content-center">
+            <div class="form-group spot">
+                <h1>スポット名</h1>
+                <input type="text" class="form-control" name="post[spot]" placeholder="地名" value="{{ old('post.spot') }}"/>
             </div>
             
-            <div class="address">
-                <h2>住所</h2>
-                <input type="text" name="post[address]" placeholder="住所" value="{{ old('post.address') }}"/>
+            <div class="form-group address">
+                <h1>住所</h1>
+                <input type="text" class="form-control" name="post[address]" placeholder="住所" value="{{ old('post.address') }}"/>
             </div>
             
             <div class="title">
-                <h2>作品名</h2>
-                <p>{{ $title->name }}</p>
+                <h1>作品名</h1>
+                <h2>{{ $title->name }}</h2>
                 <input type="hidden" name=post[title_id] value={{$title->id}} />
             </div>
             
            
-            <div class="body">
-                <h2>投稿内容</h2>
-                <textarea name="post[body]" placeholder="本文">{{ old('post.body') }}</textarea>
+            <div class="form-group body">
+                <h1>投稿内容</h1>
+                <textarea class="form-control" name="post[body]" placeholder="本文">{{ old('post.body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post/body') }}</p>
             </div>
             
@@ -72,28 +74,11 @@
             <input type="submit" value="保存"/>
             </form>
         
-        <div class="back">[<a href="/">back</a>]</div>
+        <div class="back">[<a href="/search">back</a>]</div>
         
         </div>
-        
-        
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <ul class="list-inline mb-5">
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
-                    </li>
-                </ul>
-                <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
-            </div>
-        </footer>
+        </div>
+        </div>
         
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>

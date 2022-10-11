@@ -18,10 +18,9 @@ class CreateTitlesTable extends Migration
             $table->string('name', 50);
             $table->string('author')->nullable();
             $table->string('publisher')->nullable();
-            $table->string('year')->nullable();
-            $table->string('episodes_num')->nullable();
-            $table->string('subscription')->nullable();
             $table->string('body')->nullable();
+            $table->string('fav_chara')->nullable();
+            $table->string('recommended_point')->nullable();
             $table->timestamps();
         });
     }

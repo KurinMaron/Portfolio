@@ -77,7 +77,7 @@
                 </div>
        
               
-        <div class='paginate'>
+        <div class="paginate justify-content-center">
             {{ $posts->appends(Request::only('search'))->links() }}
         </div>
             

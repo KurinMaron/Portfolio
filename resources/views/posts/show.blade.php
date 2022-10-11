@@ -17,6 +17,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/show.css') }}" rel="stylesheet">
         <script src="{{ asset('js/scripts.js') }}"></script>
     </head>
     
@@ -50,7 +51,6 @@
             <div class="content">
                 <div class="content__post">
                     <h3>作者 : {{ $title->author }}</h3>
-
                 </div>
         
         
@@ -115,7 +115,7 @@
         </div>
         
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/search">戻る</a>
         </div>
        
         

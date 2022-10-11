@@ -50,7 +50,7 @@
                     </form>
                 </div>
             
-            <h2>ランキング</h2>              
+            <h2 class="ranking">ランキング</h2>              
             <div class="container">
                 
                         <div class="ranks card-group text-center justify-content-center" style="width:60rem">
@@ -69,22 +69,25 @@
                                 </div>
                              @endforeach
                             </div>
-                    
+                         </div>
+                            
+                            <h2 class="point">投稿したい作品名を検索・クリック！！</h2>
+                            
+                    <div class="btn-group">
                     @foreach($titles as $title)
-                            <h1>作品名
-                            <a href="/shows/{{ $title->id }}">{{ $title->name }}</a>
-                            </h1>
+                            <button type="submit"><a href="/shows/{{ $title->id }}">{{ $title->name }}</a><button>
                     @endforeach 
+                     </div>       
                             
-                            
-                        </div>
+                       
+                      
               
         <div class="container">  
         <div class="posts">
             @foreach($titles as $title)
                @foreach($title->posts as $post)
                 
-            <div class="col-8 my-4">
+            <div class="col-9 my-3 mx-auto">
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-4 bg-secondary d-flex align-items-center">
@@ -109,11 +112,12 @@
                @endforeach 
             @endforeach
         </div>
-        </div> 
-              
-        <div class='paginate'>
+        
+            
+        <div class="paginate justify-content-center">
             {{ $titles->appends(Request::only('search'))->links() }}
         </div>
+        </div> 
   
     
         
