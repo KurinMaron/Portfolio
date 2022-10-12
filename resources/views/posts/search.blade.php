@@ -16,9 +16,9 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/app.css') }}" rel="stylesheet"/>
         <script src="{{ asset('js/scripts.js') }}"></script>
-        <link href="{{ asset('/css/search.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/search.css') }}" rel="stylesheet"/>
         
     </head>
     <body id="page-top">
