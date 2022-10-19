@@ -1,0 +1,29 @@
+.spot {
+    width: 300px;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 2rem 1rem 120px;
+  border: solid 2px #27acd9;
+}
+
+.spot:before {
+  position: absolute;
+  content: '';
+  top: -150%;
+  left: -100px;
+  width: 200px;
+  height: 300%;
+  transform: rotate(25deg);
+  background: #27acd9;
+}
+.spot span {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	font-size: 30px;
+	font-size: 3rem;
+	padding-left: 16px;
+	color: #fff;
+}

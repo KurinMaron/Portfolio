@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>オタマップ　投稿</title>
+        <title>オタマップ　マイページ</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -17,14 +17,13 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('/css/create.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('/css/mypage.css') }}" rel="stylesheet"/>
         <script src="{{ asset('js/scripts.js') }}"></script>
-
     </head>
     <body id="page-top">
         @extends('layouts.app')　
         @section('content')
-       <!-- ハンバーガーアイコン-->
+        <!-- ハンバーガーアイコン-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -41,53 +40,19 @@
             </div>
         </header>
         
-        <div class="main">
-            <div class="container">
-            
-        <form action="{{ action('PostController@store') }}" method ="post" enctype="multipart/form-data">
-            @csrf
-            <div class="text-left justify-content-center">
-            <div class="form-group">
-                <h1 class="spot"><span>01</span>地名</h1>
-                <input type="text" class="form-control" name="post[spot]" placeholder="地名" value="{{ old('post.spot') }}"/>
+        <div class="container">
+            <div class="col-4">
+                <h1 class="user_name"><span>ユーザー名:<?php $user = Auth::user(); ?>{{ $user->name }}</span></h1>
             </div>
-            
-            <div class="form-group">
-                <h1 class="address"><span>02</span>住所</h1>
-                <input type="text" class="form-control" name="post[address]" placeholder="住所" value="{{ old('post.address') }}"/>
-            </div>
-            
-            <div class="form-group">
-                <h1 class="title"><span>03</span>作品名</h1>
-                <h2>{{ $title->name }}</h2>
-                <input type="hidden" name=post[title_id] value={{$title->id}} />
-            </div>
-            
-           
-            <div class="form-group">
-                <h1 class="body"><span>04</span>投稿内容</h1>
-                <textarea class="form-control" name="post[body]" placeholder="本文">{{ old('post.body') }}</textarea>
-                <p class="body__error" style="color:red">{{ $errors->first('post/body') }}</p>
-            </div>
-            
-            <h1 class="image"><span>05</span>画像投稿</h1>
-                <input type="file" name="image">
-            
-            <input type="submit" value="保存"/>
-            </form>
         
+            <h1 class="advice">過去の投稿や行きたいに登録した投稿がこのページに保存されます！</h1>
         <div class="back">[<a href="/search">back</a>]</div>
         
-        </div>
-        </div>
-        </div>
         
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-       
-       
         
         @endsection
     </body>

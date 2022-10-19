@@ -27,16 +27,18 @@ class HomeController extends Controller
     public function index(User $user, Post $post)
     {
         $user_likes = $user->getLikes();
-        //dd($test);
+        
         if (!empty($user_likes->toArray())) {
             $like_post_id = [];
             foreach ($user_likes as $user_like) {
                 $like_post_id[] = $user_like->post_id;
             }
+            return view('mypage')->with(['posts' => $user->getOwnPaginateByLimit(), 'likes' =>$post->find($like_post_id)]);
+        }else{
+            return view('not_login_mypage')->with(['posts' => $user->getOwnPaginateByLimit()]);
         }
-        //dd($like_post_id);
        
-        return view('mypage')->with(['posts' => $user->getOwnPaginateByLimit(),
-        'likes' =>$post->find($like_post_id)]);
+        //return view('mypage')->with(['posts' => $user->getOwnPaginateByLimit(),
+        //'likes' =>$post->find($like_post_id)]);
     }
 }

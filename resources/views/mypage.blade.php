@@ -15,8 +15,9 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('/css/app.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('/css/mypage.css') }}" rel="stylesheet"/>
         <script src="{{ asset('js/scripts.js') }}"></script>
     </head>
     <body id="page-top">
@@ -41,7 +42,7 @@
         
         <div class="container">
             <div class="col-4">
-                <h1>user:<?php $user = Auth::user(); ?>{{ $user->name }}</h1>
+                <h1 class="user_name">ユーザー名:<?php $user = Auth::user(); ?>{{ $user->name }}</h1>
             </div>
         
        

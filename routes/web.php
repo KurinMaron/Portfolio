@@ -30,5 +30,6 @@ Route::get('/posts/{post}/edit', 'PostController@edit');
 Auth::routes();
 
 Route::get('/mypage', 'HomeController@index')->name('mypage');
+Route::get('/not_login_mypage', 'HomeController@index')->name('not_login_mypage');
 
 Route::get('/user', 'UserController@index');

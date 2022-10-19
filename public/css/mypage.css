@@ -1,0 +1,33 @@
+.user_name {
+    font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'Hiragino Mincho ProN', 'HGS明朝E', 'ＭＳ Ｐ明朝', serif;
+    padding: 1rem 2rem;
+    color: #fff;
+    background: #000;
+}
+
+.user_name span {
+    background-image: -webkit-linear-gradient(315deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
+    background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.advice {
+    position: relative;
+    padding: 1rem 2rem;
+    text-align: center;
+    border: 3px solid #000;
+}
+
+.advice before {
+    font-size: 15px;
+    font-size: 1.5rem;
+    position: absolute;
+    top: -24px;
+    left: -3px;
+    height: 24px;
+    padding: 0 1em;
+    content: 'POINT';
+    color: #fff;
+    background: #000;
+}

@@ -46,15 +46,17 @@
         
             <h1 class="title">作品名『{{ $title->name }}』</h1>
         
-            <button type="submit"><a href="/create/{{ $title->id }}">投稿</a></button>
+            <a href="/create/{{ $title->id }}" class="btn btn--orange btn--cubic btn--shadow" type="submit">投稿！</a>
+            
+
         
            
                 <div class="content__post">
-                    <h3 class="author">作者 : {{ $title->author }}</h3>
-                    <h3 class="publisher">出版社 : {{ $title->publisher }}</h3>
-                    <h3 class="overview">概要 : {{ $title->body }}</h3>
-                    <h3 class="fav_chara">管理人の推し : {{ $title->fav_chara }}</h3>
-                    <h3 class="recommended_point">おすすめポイント : {{ $title->recommended_point }}</h3>
+                    <h3 class="author mx-3">作者 : {{ $title->author }}</h3>
+                    <h3 class="publisher mx-3">出版社 : {{ $title->publisher }}</h3>
+                    <h3 class="overview mx-3">概要 : {{ $title->body }}</h3>
+                    <h3 class="recommended_point mx-3">おすすめポイント : {{ $title->recommended_point }}</h3>
+                    <h3 class="fav_chara mx-3">管理人の推し : {{ $title->fav_chara }}</h3>
                 </div>
         
         

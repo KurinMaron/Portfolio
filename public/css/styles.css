@@ -76,10 +76,6 @@
   }
 }
 
-.main {
-  background-color: #fef8c9;
-}
-
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
