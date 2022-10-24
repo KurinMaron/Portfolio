@@ -76,9 +76,6 @@
                                 @foreach($titles as $title)
                                     <a href="/shows/{{ $title->id }}" class="btn btn--orange btn--cubic btn--shadow">{{ $title->name }}</a>
                                 @endforeach 
-                                <div class="paginate justify-content-center">
-                                    {{ $titles->appends(Request::only('search'))->links() }}
-                                </div>
                             </div>
                             
                     
