@@ -112,7 +112,7 @@
         
         
         
-        <div class="back">[<a href="/search">back</a>]</div>
+        <a href="/search" class="back">検索一覧に戻る</a>
         
         <div class='paginate'>
             {{ $posts->appends(Request::only('search'))->links() }}

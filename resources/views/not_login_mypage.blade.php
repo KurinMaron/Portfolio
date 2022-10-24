@@ -46,7 +46,8 @@
             </div>
         
             <h1 class="advice">過去の投稿や行きたいに登録した投稿がこのページに保存されます！</h1>
-        <div class="back">[<a href="/search">back</a>]</div>
+            
+        <a href="/search" class="back">検索一覧に戻る</a>
         
         
         <!-- Scroll to Top Button-->

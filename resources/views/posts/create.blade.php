@@ -48,35 +48,35 @@
             @csrf
             <div class="text-left justify-content-center">
             <div class="form-group">
-                <h1 class="spot"><span>01</span>地名</h1>
+                <h1 class="creation_item"><span>01</span>地名</h1>
                 <input type="text" class="form-control" name="post[spot]" placeholder="地名" value="{{ old('post.spot') }}"/>
             </div>
             
             <div class="form-group">
-                <h1 class="address"><span>02</span>住所</h1>
+                <h1 class="creation_item"><span>02</span>住所</h1>
                 <input type="text" class="form-control" name="post[address]" placeholder="住所" value="{{ old('post.address') }}"/>
             </div>
             
             <div class="form-group">
-                <h1 class="title"><span>03</span>作品名</h1>
+                <h1 class="creation_item"><span>03</span>作品名</h1>
                 <h2>{{ $title->name }}</h2>
-                <input type="hidden" name=post[title_id] value={{$title->id}} />
+                <input type="hidden" name="post[title_id]" value="{{$title->id}}"/>
             </div>
             
            
             <div class="form-group">
-                <h1 class="body"><span>04</span>投稿内容</h1>
+                <h1 class="creation_item"><span>04</span>投稿内容</h1>
                 <textarea class="form-control" name="post[body]" placeholder="本文">{{ old('post.body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post/body') }}</p>
             </div>
             
-            <h1 class="image"><span>05</span>画像投稿</h1>
+            <h1 class="creation_item"><span>05</span>画像投稿</h1>
                 <input type="file" name="image">
             
             <input type="submit" value="保存"/>
             </form>
         
-        <div class="back">[<a href="/search">back</a>]</div>
+            <a href="/search" class="back">検索一覧に戻る</a>
         
         </div>
         </div>

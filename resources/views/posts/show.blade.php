@@ -48,8 +48,6 @@
         
             <a href="/create/{{ $title->id }}" class="btn btn--orange btn--cubic btn--shadow" type="submit">投稿！</a>
             
-
-        
            
                 <div class="content__post">
                     <h3 class="author mx-3">作者 : {{ $title->author }}</h3>
@@ -58,9 +56,6 @@
                     <h3 class="recommended_point mx-3">おすすめポイント : {{ $title->recommended_point }}</h3>
                     <h3 class="fav_chara mx-3">管理人の推し : {{ $title->fav_chara }}</h3>
                 </div>
-        
-        
-        
         
             <div class="row justify-content-center">
                 <div class="col-md-8 mb-3">
@@ -120,9 +115,7 @@
             </div>
         </div>
         
-        <div class="footer">
-            <a href="/search">戻る</a>
-        </div>
+        <a href="/search" class="back">検索一覧に戻る</a>
        
         
         

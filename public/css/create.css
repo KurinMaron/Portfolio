@@ -1,4 +1,4 @@
-.spot {
+.creation_item {
     width: 300px;
   position: relative;
   overflow: hidden;
@@ -6,7 +6,7 @@
   border: solid 2px #27acd9;
 }
 
-.spot:before {
+.creation_item:before {
   position: absolute;
   content: '';
   top: -150%;
@@ -16,7 +16,7 @@
   transform: rotate(25deg);
   background: #27acd9;
 }
-.spot span {
+.creation_item span {
 	position: absolute;
 	display: block;
 	top: 0;
@@ -26,4 +26,39 @@
 	font-size: 3rem;
 	padding-left: 16px;
 	color: #fff;
+}
+
+.back {
+    background: #eee;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 280px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.back:hover {
+    background: #313131;
+    color: #FFF;
+}
+.back:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #313131;
+    border-right: 3px solid #313131;
+    transform: rotate(45deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+.back:hover:after {
+    border-color: #FFF;
 }

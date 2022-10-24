@@ -42,8 +42,8 @@
             </div>
         </header>
         
-        <div class="back">[<a href="/search">back</a>]</div>
-        
+        <a href="/search" class="back">検索一覧に戻る</a>
+        <div class="mx-3">
         <div>
             @if($post->is_liked_by_auth_user())
             <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">行きたい</a>
@@ -67,7 +67,7 @@
         
         <div class="content">
             <div class="content__post">
-                <h4>詳細</h4>
+                <h3>詳細</h3>
                 <p>{{ $post->body }}</p>  
                 {{--<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>--}}
             </div>
@@ -99,5 +99,6 @@
         <!-- Core theme JS-->
     
         @endsection
+        </div>
     </body>
 </html>
