@@ -1,78 +1,54 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://otamap.herokuapp.com/" target="_blank"><img src="https://user-images.githubusercontent.com/108132790/198823234-14098b75-addf-4c8a-ae15-345843da85c6.png" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# アプリケーション名
+「オタマップ」
 
-## About Laravel
+## アプリケーション概要
+オタク活動をより効率的に行うための情報共有アプリケーションです。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## テスト用アカウント
+メールアドレス：test@gmail.com  
+パスワード：test1234  
+アカウント名「管理人」としてログインすることが可能です。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 開発環境
+言語：PHP 8.0.21  
+フレームワーク：Laravel 6.20.44  
+データベース：MySQL 10.2.38  
+その他：HTML, CSS, JavaScript, Bootstrap, AWS  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 作成経緯
+まず何よりも作成者が大のアニメ・漫画好きです。生き甲斐と言っても過言ではありません。  
+私のようなアニメ・漫画オタクは合わせて1300万人以上いると言われ、グッズなどを購入することで経済的にも大きな影響を及ぼしています。さらにはCOVID-19の影響で家にいる時間が長くなり、今まで以上にこのような二次元のコンテンツに魅せられる人が増えてきました。　　  
+私自身がオタクだからこそ分かる従来のアプリケーションには足りなかった要素を自らの手で実装し、1300万人のオタ活の手伝いをしたいと考え、作成に至りました。
 
-## Learning Laravel
+## 機能一覧
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- 作品名検索
+- 作品詳細ページからspotの投稿が可能
+- 作品詳細ページにはその作品のおすすめポイントを記載
+- 作品ごとの掲示板により情報共有も可能
+- spot詳細ページには「いいね（行きたい）」や「Google map」を使用
+- いいね数に応じたランキングを1~3位まで表示
+- マイページにて過去の投稿やいいねしたspotが管理
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## 機能詳細
+### 作品名検索
+<p align ="center"><img src=https://user-images.githubusercontent.com/108132790/199151528-c6aa186b-1314-4b88-bff2-ad725122e88c.png width="400"></p>
+検索ページにて作品名によるキーワード検索が可能です。「利用者が一番検索する機会が多いのは作品名」だと考えました。その理由は、聖地巡礼であれば舞台の都道府県は1ヶ所のことが多く、コラボカフェやポップアップストアは首都圏で主に開催されているため、住所には偏りが生じます。一方で、作品名で検索できるようにしておけば、スポットの検索だけでなく作品そのものの情報収集の際にも便利です。フォームに入力せずともデフォルトで5タイトルは検索ページに表示もされています。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 作品詳細ページ
+<p align ="center"><img src=https://user-images.githubusercontent.com/108132790/199151855-8544ac11-d68d-456e-976b-802e47cf1cf2.png width="400"></p>
+既存のアプリケーションとの差別化ポイントの1つです。例えば、今いる場所の近くに作品の聖地があったとします。従来のアプリでは聖地に関する情報しか掲載されておらず、どのような作品の聖地なのか他のアプリや検索ツールを使用しないと把握ができませんでした。オタ活をより効率化するために当アプリでは、作品の詳細ページを用意しました。こだわりポイントとしては私がその作品の概要やおすすめポイント、推しキャラを記載した点です。また、掲示板スペースも作品ごとに用意されており、作品に対する熱を語ることができます。レスの多さで作品の注目度も知ることができます。現状として私自身が好きな作品のみ登録がされているため対応作品がまだまだ少ないことが改善点です。
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+### spot詳細ページ
+<p align ="center"><img src=https://user-images.githubusercontent.com/108132790/199151821-21bca227-9f3f-4251-8d51-a5b566d2318d.png width="400"></p>
+特に「いいね機能」と「Google map連携」に力を入れました。　　
+いいね機能はどのspotが注目されているのか一目で分かるようにするために実装しました。いいねの数に合わせて検索ページにてランキングが3位まで表示されます。  
+また、spotの場所を把握するためにGoogle mapは必須であると考えました。投稿の際に住所を入力いただき、自動で緯度経度に変換する「Geocording API」により地点が登録され詳細ページにマップが表示されます。もちろんJavaScriptによりピンもつけ、視認性を向上させました。
 
-## Contributing
+### ログイン機能・マイページ
+<p align ="center"><img src=https://user-images.githubusercontent.com/108132790/199151763-2e7c7189-e591-4fa8-bf0b-bb3506ba8eac.png width="400"></p>
+ログインをしなくてもspot・作品名の詳細ページ閲覧は可能です。しかし、ログインをすることでspotの投稿やいいね、作品ごとの掲示板が利用できるようになります。また、過去にいいねしたspotや投稿した内容はマイページにて管理されています。もし投稿を削除したくなった場合は、マイページにあるdeleteボタンを押すことで削除が可能です。
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
