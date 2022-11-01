@@ -41,9 +41,9 @@
         </header>
         
         <div class="container">
-            <div class="col-4">
+            
                 <h1 class="user_name"><span>ユーザー名:<?php $user = Auth::user(); ?>{{ $user->name }}</span></h1>
-            </div>
+          
         
             <h1 class="advice">過去の投稿や行きたいに登録した投稿がこのページに保存されます！</h1>
             

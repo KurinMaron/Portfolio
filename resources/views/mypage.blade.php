@@ -41,9 +41,9 @@
         </header>
         
         <div class="container">
-            <div class="col-4">
+           
                 <h1 class="user_name">ユーザー名:<?php $user = Auth::user(); ?>{{ $user->name }}</h1>
-            </div>
+            
         
        
             
